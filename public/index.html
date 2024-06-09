@@ -9,11 +9,17 @@
     <button id="submit-data">Submit</button>
 
     <script>
-        $('#submit-data').click(function() {
-            const text = $('#input-text').val();
-            $.post('/list', { text: text }, function(data) {
-                console.log(data);
-            });
+        document.getElementById('submit-data').addEventListener('click', function() {
+            var text = document.getElementById('input-text').value;
+            fetch('/list', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ text: text }),
+            })
+            .then(response => response.json())
+            .then(data => console.log(data));        
         });
     </script>
 </body>
