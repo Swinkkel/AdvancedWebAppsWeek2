@@ -4,6 +4,8 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+app.use(express.json());
+
 // Task 1
 app.get("/hello", (req, res) => {
     res.json({ msg: "Hello world"});
@@ -19,6 +21,7 @@ app.get('/echo/:id', (req, res) => {
 app.post('/sum', (req, res) => {
     const numbers = req.body.numbers;
     const sum = numbers.reduce((acc, currentItem) => acc + currentItem, 0);
+
     res.json({ sum: sum});
 });
 
