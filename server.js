@@ -15,6 +15,24 @@ app.get('/echo/:id', (req, res) => {
    res.json({ id: req.params.id}) ;
 });
 
+// Task 3
+app.post('/sum', (req, res) => {
+    const numbers = req.body.numbers;
+    const sum = numbers.reduce((acc, currentItem) => acc + currentItem, 0);
+    res.json({ sum: sum});
+});
+
+// Task 4
+app.use(express.static('public'));
+
+// Task 5
+let list = [];
+app.post('/list', (req, res) => {
+    const text = req.body.text;
+    list.push(text);
+    res.json({ list: list });
+});
+
 // Make server to listen port 3000.
 app.listen(port, () => {
     console.log("Server listening a port ${port}!")

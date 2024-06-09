@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World</title>
+</head>
+<body>
+    <h1>Hello world</h1>
+    <input type="text" id="input-text">
+    <button id="submit-data">Submit</button>
+
+    <script>
+        $('#submit-data').click(function() {
+            const text = $('#input-text').val();
+            $.post('/list', { text: text }, function(data) {
+                console.log(data);
+            });
+        });
+    </script>
+</body>
+</html>
